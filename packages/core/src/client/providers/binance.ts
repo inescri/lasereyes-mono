@@ -1,12 +1,12 @@
 import { WalletProvider } from '.'
-import { BINANCE } from '../..'
+import { BINANCE, ProviderType } from '../..'
 
 export default class BinanceProvider extends WalletProvider {
   observer?: MutationObserver
 
-  public get library(): unknown | undefined {
-    console.log('BINANCE', (window as any).binancew3w)
-    return (window as any).binancew3w
+  public get library(): any | undefined {
+    return (window as any).unisat
+   // return (window as any).binancew3w?.ethereum
   }
 
   initialize(): void {
@@ -24,27 +24,45 @@ export default class BinanceProvider extends WalletProvider {
     }
   }
 
-  connect(): Promise<boolean | void> {
-    throw new Error('Method not implemented.')
-  }
 
-  dispose(): void {
-    throw new Error('Method not implemented.')
+
+    async connect(_: ProviderType): Promise<void> {
+      if (!this.library) throw new Error("Unisat isn't installed")
+      const unisatAccounts = await this.library.requestAccounts()
+      if (!unisatAccounts) throw new Error('No accounts found')
+  
+      const unisatPubKey = await this.library.getPublicKey()
+      if (!unisatPubKey) throw new Error('No public key found')
+      this.$store.setKey('accounts', unisatAccounts)
+      this.$store.setKey('address', unisatAccounts[0])
+      this.$store.setKey('paymentAddress', unisatAccounts[0])
+      this.$store.setKey('publicKey', unisatPubKey)
+      this.$store.setKey('paymentPublicKey', unisatPubKey)
+    }
+
+
+  dispose() {
+    this.observer?.disconnect()
   }
+  
 
   disconnect(): void {
-    throw new Error('Method not implemented.')
+   console.log('DISCONNECT BINANCE')
   }
 
-  sendBTC(): Promise<string> {
-    throw new Error('Method not implemented.')
+  async requestAccounts(): Promise<string[]> {
+    return await this.library.requestAccounts()
   }
 
-  signMessage(): Promise<string> {
-    throw new Error('Method not implemented.')
+  async sendBTC(): Promise<string> {
+    return "NOT IMPLEMENTED"
   }
 
-  signPsbt(): Promise<
+  async signMessage(): Promise<string> {
+    return "NOT IMPLEMENTED"
+  }
+
+  async signPsbt(): Promise<
     | {
         signedPsbtHex: string | undefined
         signedPsbtBase64: string | undefined
@@ -52,6 +70,6 @@ export default class BinanceProvider extends WalletProvider {
       }
     | undefined
   > {
-    throw new Error('Method not implemented.')
+    return undefined;
   }
 }

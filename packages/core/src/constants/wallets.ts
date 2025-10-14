@@ -101,6 +101,6 @@ export const SUPPORTED_WALLETS: WalletInfo = {
   },
   [ProviderEnumMap.BINANCE]: {
     name: ProviderEnumMap.BINANCE,
-    url: 'https://www.binance.com/en/binance-wallet',
+    url: 'https://www.binance.com/en/binancewallet',
   },
 }

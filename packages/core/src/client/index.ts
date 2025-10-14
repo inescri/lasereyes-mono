@@ -8,6 +8,7 @@ import {
 import type { ALKANES, BRC20, BTC, RUNES } from "../constants/protocols"
 import { LOCAL_STORAGE_DEFAULT_WALLET } from "../constants/settings"
 import {
+  BINANCE,
   KEPLR,
   LEATHER,
   MAGIC_EDEN,
@@ -59,6 +60,7 @@ import type {
   SignPsbtsResponse,
 } from "./types"
 import { triggerDOMShakeHack } from "./utils"
+import BinanceProvider from "./providers/binance"
 
 export class LaserEyesClient {
   readonly $store: MapStore<LaserEyesStoreType>
@@ -102,6 +104,7 @@ export class LaserEyesClient {
       [XVERSE]: new XVerseProvider(stores, this, config),
       [WIZZ]: new WizzProvider(stores, this, config),
       [KEPLR]: new KeplrProvider(stores, this, config),
+      [BINANCE]: new BinanceProvider(stores, this, config),
     }
 
     this.modules = {
