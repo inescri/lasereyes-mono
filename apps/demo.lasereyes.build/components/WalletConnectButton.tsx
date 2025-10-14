@@ -16,6 +16,7 @@ import {
   // SPARROW,
   WalletIcon,
   type TOKEO,
+  type BINANCE,
 } from '@omnisat/lasereyes'
 import { Button } from '@/components/ui/button'
 import { toast } from 'sonner'
@@ -50,6 +51,7 @@ const WalletConnectButton = ({
     hasTokeo,
     hasOpNet,
     hasKeplr,
+    hasBinance,
   } = useLaserEyes()
 
   const hasWallet = {
@@ -66,6 +68,7 @@ const WalletConnectButton = ({
     orange: hasOrange,
     tokeo: hasTokeo,
     keplr: hasKeplr,
+    binance: hasBinance,
   }
 
   const [error, setError] = useState<string | null>(null)
@@ -87,6 +90,7 @@ const WalletConnectButton = ({
       | typeof WIZZ
       | typeof ORANGE
       | typeof TOKEO
+      | typeof BINANCE
   ) => {
     try {
       await connect(walletName)
@@ -162,7 +166,7 @@ const WalletConnectButton = ({
     >
       {error && <div className="text-red-500">{error}</div>}
       <WalletIcon walletName={wallet.name} size={24} />
-      {wallet.name}
+      {wallet.name} [test]
     </Button>
   )
 }

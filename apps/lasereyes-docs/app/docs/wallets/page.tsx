@@ -24,6 +24,7 @@ import {
   WalletIcon,
   WIZZ,
   XVERSE,
+  BINANCE,
   type ProviderType,
 } from '@omnisat/lasereyes-react'
 import { ExternalLink } from 'lucide-react'
@@ -94,6 +95,13 @@ const wallets = [
     description: 'Bitcoin-native wallet with Ordinals and BRC-20 support.',
     url: 'https://orange.xyz',
     icon: <WalletIcon walletName={ORANGE} size={64} />,
+  },
+  {
+    id: BINANCE as ProviderType,
+    name: 'Binance',
+    description: 'Binance wallet with support for various cryptocurrencies.',
+    url: 'https://www.binance.com',
+    icon: <WalletIcon walletName={BINANCE} size={64} />,
   },
 ].sort((a, b) => a.name.localeCompare(b.name))
 

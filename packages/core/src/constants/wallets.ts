@@ -11,6 +11,7 @@ export const OP_NET = 'op_net'
 export const SPARROW = 'sparrow'
 export const TOKEO = 'tokeo'
 export const KEPLR = 'keplr'
+export const BINANCE = 'binance'
 
 export const P2TR = 'p2tr'
 export const P2PKH = 'p2pkh'
@@ -35,6 +36,7 @@ enum ProviderEnumMap {
   WIZZ = 'wizz',
   XVERSE = 'xverse',
   KEPLR = 'keplr',
+  BINANCE = 'binance',
 }
 
 type WalletInfo = {
@@ -96,5 +98,9 @@ export const SUPPORTED_WALLETS: WalletInfo = {
   [ProviderEnumMap.KEPLR]: {
     name: ProviderEnumMap.KEPLR,
     url: 'https://keplr.app/download',
+  },
+  [ProviderEnumMap.BINANCE]: {
+    name: ProviderEnumMap.BINANCE,
+    url: 'https://www.binance.com/en/binance-wallet',
   },
 }
