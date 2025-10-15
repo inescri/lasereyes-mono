@@ -14,8 +14,8 @@ export default class BinanceProvider extends WalletProvider {
   observer?: MutationObserver
 
   public get library(): any | undefined {
-    return (window as any).unisat
-    // return (window as any).binancew3w?.bitcoin
+    // return (window as any).unisat
+    return (window as any).binancew3w?.bitcoin
   }
 
   initialize(): void {
