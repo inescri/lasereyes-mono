@@ -25,8 +25,10 @@ import {
   SPARROW,
   TOKEO,
   KEPLR,
+  BINANCE,
 } from '@omnisat/lasereyes-core'
 import KeplrLogo from './keplr.tsx'
+import { BinanceLogo } from './binance.tsx'
 
 const WalletIcon = ({
   size,
@@ -65,6 +67,8 @@ const WalletIcon = ({
     return <TokeoLogo size={size} className={className} variant={variant} />
   } else if (walletName === KEPLR) {
     return <KeplrLogo size={size} className={className} variant={variant} />
+  } else if (walletName === BINANCE) {
+    return <BinanceLogo size={size} className={className} variant={variant} />
   } else {
     return <OylLogo size={size} className={className} variant={variant} />
   }
