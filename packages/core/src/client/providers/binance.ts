@@ -2,7 +2,6 @@ import * as bitcoin from "bitcoinjs-lib";
 import { WalletProvider } from ".";
 import {
   BINANCE,
-  BinanceNetwork,
   BIP322,
   BIP322_SIMPLE,
   getBinanceNetwork,
@@ -13,6 +12,9 @@ import {
   WalletProviderSignPsbtOptions,
 } from "../..";
 import { omitUndefined } from "../../lib/utils";
+
+// Binance Bitcoin provider documentation
+// https://developers.binance.com/docs/binance-w3w/bitcoin-provider
 
 export default class BinanceProvider extends WalletProvider {
   observer?: MutationObserver;
@@ -42,7 +44,6 @@ export default class BinanceProvider extends WalletProvider {
 
   async connect(_: ProviderType): Promise<void> {
     if (!this.library) throw new Error("Binance isn't installed");
-    await this.library.switchNetwork(BinanceNetwork.MAINNET);
     const binanceAccounts = await this.library.requestAccounts();
     if (!binanceAccounts) throw new Error("No accounts found");
     const binancePubKey = await this.library.getPublicKey();
@@ -73,12 +74,17 @@ export default class BinanceProvider extends WalletProvider {
   }
 
   async getBalance() {
-    const { total } = await this.library?.getBalance();
-    return total;
+    const balance = await this.library?.getBalance();
+    return balance?.total;
   }
 
-  async sendBTC(): Promise<string> {
-    throw new Error("NOT IMPLEMENTED");
+  async sendBTC(to: string, amount: number): Promise<string> {
+    if (typeof this.library.sendBitcoin === "function") {
+      const txId = await this.library?.sendBitcoin(to, amount)
+      if (!txId) throw new Error('Transaction failed')
+      return txId
+    }
+    throw new Error("Not implemented"); 
   }
 
   override async signMessage(
