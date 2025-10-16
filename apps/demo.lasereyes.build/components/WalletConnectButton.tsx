@@ -166,7 +166,7 @@ const WalletConnectButton = ({
     >
       {error && <div className="text-red-500">{error}</div>}
       <WalletIcon walletName={wallet.name} size={24} />
-      {wallet.name} [test]
+      {wallet.name}
     </Button>
   )
 }
