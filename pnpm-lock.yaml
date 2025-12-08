@@ -422,9 +422,6 @@ importers:
       crypto-browserify:
         specifier: ^3.12.1
         version: 3.12.1
-      nanostores:
-        specifier: ^0.11.3
-        version: 0.11.4
       ordapi:
         specifier: ^0.0.7
         version: 0.0.7
@@ -434,6 +431,9 @@ importers:
       tiny-async-pool:
         specifier: ^2.1.0
         version: 2.1.0
+      uint8array-tools:
+        specifier: ^0.0.9
+        version: 0.0.9
     devDependencies:
       '@leather.io/rpc':
         specifier: ^2.20.3
@@ -450,6 +450,9 @@ importers:
       globals:
         specifier: ^15.9.0
         version: 15.15.0
+      nanostores:
+        specifier: ^0.11.3
+        version: 0.11.4
       sonda:
         specifier: ^0.7.1
         version: 0.7.1
@@ -15753,7 +15756,6 @@ packages:
   /nanostores@0.11.4:
     resolution: {integrity: sha512-k1oiVNN4hDK8NcNERSZLQiMfRzEGtfnvZvdBvey3SQbgn8Dcrk0h1I6vpxApjb10PFUflZrgJ2WEZyJQ+5v7YQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
-    dev: false
 
   /napi-postinstall@0.2.4:
     resolution: {integrity: sha512-ZEzHJwBhZ8qQSbknHqYcdtQVr8zUgGyM/q6h6qAyhtyVMNrSgDhrC4disf03dYW0e+czXyLnZINnCTEkWy0eJg==}
