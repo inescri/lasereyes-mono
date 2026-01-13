@@ -49,6 +49,7 @@ export function useLaserEyes<T>(
         hasXverse: store.hasProvider.xverse ?? false,
         hasTokeo: store.hasProvider.tokeo ?? false,
         hasKeplr: store.hasProvider.keplr ?? false,
+        hasBinance: store.hasProvider.binance ?? false,
         ...methods,
       }
       // if (typeof selector === 'function') {

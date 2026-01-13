@@ -14,6 +14,7 @@ import {
   SPARROW,
   TOKEO,
   KEPLR,
+  BINANCE,
 } from '../constants/wallets'
 import type { NetworkType, ProviderType, Config } from '../types'
 import type { LaserEyesStoreType } from './types'
@@ -60,6 +61,7 @@ export function createStores(): {
         [WIZZ]: false,
         [XVERSE]: false,
         [KEPLR]: false,
+        [BINANCE]: false,
       },
     }),
     $network: atom(MAINNET),
